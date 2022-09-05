@@ -1,0 +1,16 @@
+*{
+    font-size: 12px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+body{
+    background-color: rgb(233, 233, 233);
+}
+.btn_block{
+    width: 100%;
+}
+.text_white{
+    color:  rgb(233, 233, 233);
+}
+.card_pas{
+    padding: 4.63px;
+}
