@@ -1,2 +1,2 @@
-# simas
-simas
+# SIMAS
+## Sistem Informasi Manajemen Arsip Surat
