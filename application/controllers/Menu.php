@@ -49,7 +49,7 @@ class Menu extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['menu'] = $this->db->get_where('user_menu', ['id' => $id])->row_array();
-        $this->load->view('menu/aktifMenu.php', $data);
+        $this->load->view('menu/aktifMenu', $data);
         $this->db->set('aktif', 1);
         $this->db->where('id', $id);
         $this->db->update('user_menu');

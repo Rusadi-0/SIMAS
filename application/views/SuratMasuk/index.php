@@ -175,7 +175,7 @@ Prihal Surat    : <strong>' . strtoupper($sk['prihalSurat']) . '</strong>
 														}
 
 														if (!$sk['fileSurat'] == NULL) {
-															echo '<a target="_blank" href="' . base_url('./surat/') . $sk['fileSurat'] . '" class="btn btn-info"><i class="mdi mdi-eye"></i> Lihat Surat</a>';
+															echo '<a target="_blank" href="' . base_url('./ZpITfmvwnMrnap5Yfj5lUD6/') . $sk['noAgenda']. '/' . $sk['fileSurat'] . '" class="btn btn-info"><i class="mdi mdi-eye"></i> Lihat Surat</a>';
 														}
 
 														?>
@@ -192,7 +192,7 @@ Prihal Surat    : <strong>' . strtoupper($sk['prihalSurat']) . '</strong>
 															function hapus<?= $sk['id']; ?>() {
 																var yakin = confirm('Yakin ingin hapus surat dari "<?= $sk['asalSurat']; ?>" ??');
 																if (yakin) {
-																	window.location = "<?= base_url('SuratMasuk/masukHapus/') . $sk['id']; ?>";
+																	window.location = "<?= base_url('SuratMasuk/masukHapus/') . $sk['noAgenda']; ?>";
 																}
 															};
 														</script>
@@ -213,6 +213,8 @@ Prihal Surat    : <strong>' . strtoupper($sk['prihalSurat']) . '</strong>
 					<div class="card-body">
 						<?php echo form_open_multipart() ?>
 						<input id="myText" type="hidden" name="noAgenda" value="">
+						<input type="hidden" name="namaFolder" value="<?php if($bykSrt == 0){echo "1";}else{foreach($namaFolder as $nf){echo $nf;}}?>">
+
 
 						<script>
 							const ada1 = [<?php foreach ($suratMasuk as $sm) : ?><?= "'" . $sm["id"] . "'"; ?>, <?php endforeach; ?>];
@@ -234,7 +236,7 @@ Prihal Surat    : <strong>' . strtoupper($sk['prihalSurat']) . '</strong>
 						<?= $this->session->flashdata('tidak'); ?>
 						<input type="file" id="input-file-now" name="fileSurat" class="dropify">
 						<input type="hidden" value="0" name="disposisi">
-						<p><small>Format file : PDF | JPG | PNG, max : 1 Mb</small></p>
+						<p><small>Format file : PDF, max : 1 Mb</small></p>
 						<!-- <button type="submit" onclick="this.innerHTML=plp" class="btn btn-primary mt-2" class="btn btn-primary mt-2">Simpan</button> -->
 						<div id="jahh">
 							<button type="submit" id="jah" onclick="oh()" class="btn btn-primary mt-2" class="btn btn-primary mt-2"><i class="mdi mdi-content-save"></i> Simpan</button>

@@ -30,7 +30,7 @@
                     <!-- Column -->
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="card m-b-30">
-                            <a href="<?= base_url('surat/masuk')?>">
+                            <a href="<?= base_url('SuratMasuk')?>">
                             <div class="card-body uhuy">
                                 <div class="d-flex flex-row">
                                     <div class="col-2 align-self-center">
@@ -59,7 +59,7 @@
                     <!-- Column -->
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="card m-b-30">
-                            <a href="<?= base_url('surat/keluar')?>">
+                            <a href="<?= base_url('SuratKeluar')?>">
                             <div class="card-body uhuy">
                                 <div class="d-flex flex-row">
                                     <div class="col-2 align-self-center">
@@ -88,11 +88,11 @@
 <script>
 
 if(<?= $total_disposisi?> > 0){
-   document.writeln(`                    <!-- Column -->
+   document.writeln(/*html*/`<!-- Column -->
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="card m-b-30">
                             <?php if($total_disposisi):?>
-                            <a href="<?= base_url('surat/masuk')?>">
+                            <a href="<?= base_url('SuratMasuk')?>">
                             <?php endif;?>
                             <div style="background-color: #f9fffa;" class="card-body uhuy">
                                 <div class="d-flex flex-row">
@@ -114,11 +114,11 @@ if(<?= $total_disposisi?> > 0){
                     </div>
                     <!-- Column -->`); 
 } else{
-    document.writeln(`<!-- Column -->
+    document.writeln(/*html*/`<!-- Column -->
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="card m-b-30">
                             <?php if($total_disposisi):?>
-                            <a href="<?= base_url('surat/masuk')?>">
+                            <a href="<?= base_url('SuratMasuk')?>">
                             <?php endif;?>
                             <div class="card-body uhuy">
                                 <div class="d-flex flex-row">
@@ -142,11 +142,11 @@ if(<?= $total_disposisi?> > 0){
 }
 
 if(<?= $total_belum?> > 0){
-    document.writeln(`                    <!-- Column -->
+    document.writeln(/*html*/`<!-- Column -->
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="card m-b-30">
                         <?php if($total_belum):?>
-                            <a href="<?= base_url('surat/masuk')?>">
+                            <a href="<?= base_url('SuratMasuk')?>">
                             <?php endif;?>
                             <div  style="background-color: #fffcfc;" class="card-body uhuy">
                                 <div class="d-flex flex-row">
@@ -168,11 +168,11 @@ if(<?= $total_belum?> > 0){
                     </div>
                     <!-- Column -->`);
 } else {
-    document.writeln(`                    <!-- Column -->
+    document.writeln(/*html*/`<!-- Column -->
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="card m-b-30">
                         <?php if($total_belum):?>
-                            <a href="<?= base_url('surat/masuk')?>">
+                            <a href="<?= base_url('SuratMasuk')?>">
                             <?php endif;?>
                             <div class="card-body uhuy">
                                 <div class="d-flex flex-row">

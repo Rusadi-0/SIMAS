@@ -23,7 +23,7 @@
         <?= $this->session->flashdata('message'); ?>
         <div class="row">
             <div class="col-sm-12 mb-4">
-                <div class="mx-auto card mb-3" style="max-width: 700px;">
+                <div class="mx-auto card mb-3 shadows" style="max-width: 700px;">
                     <div class="row no-gutters">
                         <div class="col-md-6">
                             <a href="<?= base_url('profile/edit'); ?>"><img style="" src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="card-img-top img-fluid"></a>

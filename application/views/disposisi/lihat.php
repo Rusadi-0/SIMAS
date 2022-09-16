@@ -44,7 +44,7 @@
 
                                 function lihatFile() {
                                     window.open(
-                                        '<?= base_url('surat/') . $surat['fileSurat'] ?>',
+                                        '<?= base_url('ZpITfmvwnMrnap5Yfj5lUD6/') . $surat['noAgenda'] . '/' . $surat['fileSurat'] ?>',
                                         '_blank' // <- This is what makes it open in a new window.
                                     );
                                 }

@@ -68,7 +68,7 @@
                             </div>
                             
                             <div class="col-sm-9">
-                                <a href="<?= base_url('surat/masuk'); ?>" class="btn btn-outline-secondary"><i class="mdi mdi-undo-variant"></i> Kembali</a>
+                                <a href="<?= base_url('SuratMasuk'); ?>" class="btn btn-outline-secondary"><i class="mdi mdi-undo-variant"></i> Kembali</a>
                                 <?php
 
                                 if ($suratMasuk['dibaca'] && $suratMasuk['melihat'] == true) {
@@ -89,7 +89,7 @@
                         <div class="row">
                             <div class="col">
                                 <input type="file" id="input-file-now" name="fileSurat" class="dropify" data-height="200" data-default-file="<?= base_url('/surat/') . $suratMasuk['fileSurat']; ?>">
-                                <a id="lihatSurat" target="_blank" class="btn btn-block btn-info mt-4" href="<?= base_url('surat/') . $suratMasuk['fileSurat']; ?>"><i class="mdi mdi-eye"></i> Lihat surat</a>
+                                <a id="lihatSurat" target="_blank" class="btn btn-block btn-info mt-4" href="<?= base_url('ZpITfmvwnMrnap5Yfj5lUD6/') . $suratMasuk['noAgenda'] .'/'. $suratMasuk['fileSurat']; ?>"><i class="mdi mdi-eye"></i> Lihat surat</a>
                                 <script>
                                     if ('' == '<?= $suratMasuk['fileSurat']?>') {
                                         document.getElementById('lihatSurat').remove();

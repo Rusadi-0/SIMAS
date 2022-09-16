@@ -2,6 +2,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+
 class SuratMasuk extends CI_Controller
 {
     public function __construct()
@@ -18,6 +19,8 @@ class SuratMasuk extends CI_Controller
 
         $data['suratMasuk'] = $this->surat->getSuratMasuk('surat_masuk');
         $data['surat'] = $this->surat->getSurat('surat_masuk');
+        $data['namaFolder'] = $this->surat->getSMs('surat_masuk');
+        $data['bykSrt'] = $this->surat->hitungJumlahMasuk('surat_masuk');
 
         $this->form_validation->set_rules('nomorSurat', 'Nomor Surat', 'required');
         $this->form_validation->set_rules('asalSurat', 'Asal Surat', 'required');
@@ -31,16 +34,21 @@ class SuratMasuk extends CI_Controller
             $this->load->view('SuratMasuk/index', $data);
             $this->load->view('templates/footer');
         } else {
-            $config['upload_path']          = './surat/';
-            $config['allowed_types']        = 'pdf|jpg|png';
+            $namaFolder = $this->input->post('noAgenda') + 1;
+            mkdir("F:\\xampp\\htdocs\\SIMAS\\ZpITfmvwnMrnap5Yfj5lUD6\\" . $namaFolder);
+            $config['upload_path']          = './ZpITfmvwnMrnap5Yfj5lUD6/' . $namaFolder . '/';
+            // $config['allowed_types']        = 'pdf|jpg|png';
+            $config['allowed_types']        = 'pdf';
             $config['max_size']             = 1244;
+            $config['file_name']         = "9416636910c22e60eb16bf81f6724665";
             // $config['encrypt_name']         = TRUE;
-            // $config['max_width']            = 1024;
+            // $config['max_wth']            = 1024;
             // $config['max_height']           = 768;
 
             $this->load->library('upload', $config);
             $this->upload->do_upload('fileSurat');
             $datas = [
+                // 'namaFolder' => htmlspecialchars($this->upload->data('file_name')),
                 'noAgenda' => $this->input->post('noAgenda') + 1,
                 'nomorSurat' => strtoupper(htmlspecialchars($this->input->post('nomorSurat'))),
                 'asalSurat' => strtoupper(htmlspecialchars($this->input->post('asalSurat'))),
@@ -50,28 +58,18 @@ class SuratMasuk extends CI_Controller
                 'tgl' => strtoupper(htmlspecialchars($this->input->post('tgl'))),
                 'waktu' => time()
             ];
-            if ($this->upload->data('file_ext') == '.pdf') {
-                $this->db->insert('surat_masuk', $datas);
-                $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Rekam berhasil dan Surat berhasil Terkirim Ke <br><strong>Kepala Badan</strong></div>');
-                redirect('SuratMasuk');
-            } elseif ($this->upload->data('file_ext') == '.jpg') {
-                $this->db->insert('surat_masuk', $datas);
-                $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Rekam berhasil dan Surat berhasil Terkirim Ke <br><strong>Kepala Badan</strong></div>');
-                redirect('SuratMasuk');
-            } elseif ($this->upload->data('file_ext') == '.png') {
-                $this->db->insert('surat_masuk', $datas);
-                $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Rekam berhasil dan Surat berhasil Terkirim Ke <br><strong>Kepala Badan</strong></div>');
-                redirect('SuratMasuk');
-            } elseif ($this->upload->data('file_ext') == '') {
+            if ($this->upload->data('file_ext') == '.pdf' && $this->upload->data('file_size') < 1300) {
                 $this->db->insert('surat_masuk', $datas);
                 $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Rekam berhasil dan Surat berhasil Terkirim Ke <br><strong>Kepala Badan</strong></div>');
                 redirect('SuratMasuk');
             } else {
-                $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-danger " data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>
-                 GAGAL, file terupload berformat<strong> Salah..!!</strong>
-                </div>');
-                $this->session->set_flashdata('tidak', '<small style="color: red;">File yang di Upload harus format <strong>PDF / JPG / PNG</strong></small>');
-                redirect('SuratMasuk');
+                if ($this->upload->data('file_ext') != '.pdf') {
+                    $this->session->set_flashdata('tidak', '<small style="color: red;"> <strong>UPLOAD GAGAL..!!</strong> File diupload bukan berformat PDF  </small>');
+                    redirect('SuratMasuk');
+                } elseif ($this->upload->data('file_size') > 1300) {
+                    $this->session->set_flashdata('tidak', '<small style="color: red;"> <strong>UPLOAD GAGAL..!!</strong> File diupload melebih 1 MB  </small>');
+                    redirect('SuratMasuk');
+                }
             }
         }
     }
@@ -79,11 +77,12 @@ class SuratMasuk extends CI_Controller
     //function untuk hapus surat masuk
     public function masukHapus($id)
     {
-        $path = './surat/' . $id;
-        chmod($path, 0777);
-        unlink($path);
-        $this->db->delete('surat_masuk', ['id' => $id]);
-        $this->db->delete('lembar_disposisi', ['id' => $id]);
+        // chmod($path, 0777);
+        // unlink($path);
+        unlink("F:\\xampp\\htdocs\\SIMAS\\ZpITfmvwnMrnap5Yfj5lUD6\\" . $id . "\\9416636910c22e60eb16bf81f6724665.pdf");
+        rmdir("F:\\xampp\\\htdocs\\SIMAS\\ZpITfmvwnMrnap5Yfj5lUD6\\" . $id . "\\");
+        $this->db->delete('surat_masuk', ['noAgenda' => $id]);
+        $this->db->delete('lembar_disposisi', ['noAgenda' => $id]);
         $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Surat dipilih berhasil <strong>Terhapus..!!</strong></div>');
         redirect('SuratMasuk');
     }
@@ -121,7 +120,7 @@ class SuratMasuk extends CI_Controller
             if ($upload_image) {
                 $config['allowed_types']        = 'pdf|jpg|png';
                 $config['max_size']             = 1244;
-                $config['upload_path']          = './surat/';
+                $config['upload_path']          = './ZpITfmvwnMrnap5Yfj5lUD6/';
                 $config['encrypt_name']         = TRUE;
 
                 $this->load->library('upload', $config);
@@ -129,7 +128,7 @@ class SuratMasuk extends CI_Controller
                 if ($this->upload->do_upload('fileSurat')) {
                     $old_image = $data['suratMasuk']['fileSurat'];
                     if ($old_image != 'default.jpg') {
-                        unlink(FCPATH . './surat/' . $old_image);
+                        unlink(FCPATH . './ZpITfmvwnMrnap5Yfj5lUD6/' . $old_image);
                     }
                     $new_image = $this->upload->data('file_name');
                     $this->db->set('fileSurat', $new_image);
@@ -184,7 +183,7 @@ class SuratMasuk extends CI_Controller
             if ($upload_image) {
                 $config['allowed_types']        = 'pdf|jpg|png';
                 $config['max_size']             = 1244;
-                $config['upload_path']          = './surat/';
+                $config['upload_path']          = './ZpITfmvwnMrnap5Yfj5lUD6/';
                 $config['encrypt_name']         = TRUE;
 
                 $this->load->library('upload', $config);
@@ -192,7 +191,7 @@ class SuratMasuk extends CI_Controller
                 if ($this->upload->do_upload('fileSurat')) {
                     $old_image = $data['suratMasuk']['fileSurat'];
                     if ($old_image != 'default.jpg') {
-                        unlink(FCPATH . './surat/' . $old_image);
+                        unlink(FCPATH . './ZpITfmvwnMrnap5Yfj5lUD6/' . $old_image);
                     }
                     $new_image = $this->upload->data('file_name');
                     $this->db->set('fileSurat', $new_image);
@@ -238,11 +237,10 @@ class SuratMasuk extends CI_Controller
         $this->load->model('Disposisi_model', 'disposisi');
 
         $data['disposisi'] = $this->disposisi->getDisposisi($id);
-
-
+        
 
         $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [210, 330]]);
-        $data = $this->load->view('SuratMasuk/disposisi/lembarDisposisi', $data, TRUE);
+        $data = $this->load->view('disposisi/lembarDisposisi', $data, TRUE);
         $mpdf->imageVars['myvariable'] = file_get_contents(base_url('/assets/img/logo.png'));
         $mpdf->SetWatermarkText('           copy', 0.1);
         $mpdf->showWatermarkText = true;
@@ -277,8 +275,3 @@ class SuratMasuk extends CI_Controller
         redirect('SuratMasuk');
     }
 }
-		
-		
-		
-		
-		

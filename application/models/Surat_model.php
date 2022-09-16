@@ -21,6 +21,15 @@ class Surat_model extends CI_Model
                 ";
         return $this->db->query($query)->row_array();
     }
+    public function getSMs()
+    {
+        $query = "SELECT `noAgenda` 
+                  FROM `surat_masuk` 
+                  ORDER BY `noAgenda` 
+                  DESC LIMIT 1
+                ";
+        return $this->db->query($query)->row_array();
+    }
     public function getSurat()
     {
         $query = "SELECT * 

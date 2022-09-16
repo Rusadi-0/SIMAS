@@ -39,7 +39,7 @@
                             ?>
                             <?php foreach ($subMenu as $sm) : ?>
                                 <li class="has-submenu">
-                                <li><a href="<?= base_url($sm['url']); ?>"><i class="<?= $sm['icons']; ?>"></i><?= $sm['title']; ?></a></li>
+                                    <a href="<?= base_url($sm['url']); ?>"><i class="<?= $sm['icons']; ?>"></i><?= $sm['title']; ?></a>
                                 </li>
 
                             <?php endforeach; ?>

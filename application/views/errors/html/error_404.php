@@ -1,3 +1,7 @@
+<?php
+$d = "http://localhost/simas";
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -10,11 +14,11 @@
 	<meta content="Mannatthemes" name="author" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-	<link rel="shortcut icon" href="../assets/images/favicon.ico">
+	<link rel="shortcut icon" href="<?= $d; ?>/assets/images/favicon.ico">
 
-	<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link href="../assets/css/icons.css" rel="stylesheet" type="text/css">
-	<link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+	<link href="<?= $d; ?>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="<?= $d; ?>/assets/css/icons.css" rel="stylesheet" type="text/css">
+	<link href="<?= $d; ?>/assets/css/style.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -32,7 +36,7 @@
 					<h1 class="">404!</h1>
 					<h3 class="">Page Not Found</h3><br>
 
-					<a class="btn btn-danger mb-5 waves-effect waves-light" href="../dashboard">Kembali ke Dashboard</a>
+					<a class="btn btn-danger mb-5 waves-effect waves-light" href="<?= $d; ?>/dashboard">Kembali ke Dashboard</a>
 				</div>
 
 			</div>
@@ -40,17 +44,17 @@
 	<!-- </div> -->
 
 	<!-- jQuery  -->
-	<script src="../assets/js/jquery.min.js"></script>
-	<script src="../assets/js/popper.min.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
-	<script src="../assets/js/modernizr.min.js"></script>
-	<script src="../assets/js/waves.js"></script>
-	<script src="../assets/js/jquery.slimscroll.js"></script>
-	<script src="../assets/js/jquery.nicescroll.js"></script>
-	<script src="../assets/js/jquery.scrollTo.min.js"></script>
+	<script src="<?= $d; ?>/assets/js/jquery.min.js"></script>
+	<script src="<?= $d; ?>/assets/js/popper.min.js"></script>
+	<script src="<?= $d; ?>/assets/js/bootstrap.min.js"></script>
+	<script src="<?= $d; ?>/assets/js/modernizr.min.js"></script>
+	<script src="<?= $d; ?>/assets/js/waves.js"></script>
+	<script src="<?= $d; ?>/assets/js/jquery.slimscroll.js"></script>
+	<script src="<?= $d; ?>/assets/js/jquery.nicescroll.js"></script>
+	<script src="<?= $d; ?>/assets/js/jquery.scrollTo.min.js"></script>
 
 	<!-- App js -->
-	<script src="../assets/js/app.js"></script>
+	<script src="<?= $d; ?>/assets/js/app.js"></script>
 
 </body>
 
