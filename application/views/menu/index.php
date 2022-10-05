@@ -47,7 +47,6 @@
                                             <div class="button-items">
                                                 <button disabled class="btn hps1<?= $m['id']; ?> btn-success waves-effect waves-success" data-toggle="tooltip" data-placement="left" title="" data-original-title="Edit" onclick="edit<?= $m['id']; ?>()"><i class="mdi mdi-lead-pencil"></i></button>
                                                 <button disabled class="btn hps2<?= $m['id']; ?> btn-danger waves-effect waves-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete" onclick="hapus<?= $m['id']; ?>()"><i class="mdi mdi-delete"></i></button>
-                                                <button disabled class="btn aktifMenus<?= $m['id']; ?> btn-warning waves-effect waves-warning" data-toggle="tooltip" data-placement="right" title="" data-original-title="Aktifkan" onclick="aktif<?= $m['id']; ?>()"><i class="mdi mdi-check"></i></button>
                                             </div>
                                         </td>
                                     </tr>
@@ -56,10 +55,6 @@
                                         if (<?= $m['id']; ?> > 3) {
                                             document.getElementsByClassName("hps1<?= $m['id']; ?>")[0].removeAttribute("disabled");
                                             document.getElementsByClassName("hps2<?= $m['id']; ?>")[0].removeAttribute("disabled");
-                                        }
-                                        
-                                        if(<?= $m['aktif']; ?> == 0){
-                                            document.getElementsByClassName("aktifMenus<?= $m['id']; ?>")[0].removeAttribute("disabled");
                                         }
 
                                         function edit<?= $m['id']; ?>() {

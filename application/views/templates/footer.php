@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    © <?= date("Y", time()) ?> by <strong>Hadi Rusadi</strong>.
+                    © <?= date("Y", time()) ?> by <strong><a href="https://github.com/rusadi-0/"></a>Hadi Rusadi</strong>.
                 </div>
             </div>
         </div>

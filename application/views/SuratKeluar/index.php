@@ -107,7 +107,7 @@ Prihal Surat    : <strong>' . strtoupper($sk['prihalSurat']) . '</strong>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <?php if (!$sk['fileSurat'] == '') {
-                                                        echo '<a target="_blank" href="' . base_url('surat/' . $sk['fileSurat']) . '" type="button" class="btn btn-primary">Lihat Surat</a>';
+                                                        echo '<a target="_blank" href="' . base_url('ZpITfmvwnMrnap5Yfj5lUD6/' . $sk['fileSurat']) . '" type="button" class="btn btn-primary">Lihat Surat</a>';
                                                     } ?>
 
                                                     <button type="button" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit" onclick="edit(<?= $sk['id']; ?>)" class="btn btn-success"><i class="mdi mdi-lead-pencil"></i></button>
@@ -117,13 +117,13 @@ Prihal Surat    : <strong>' . strtoupper($sk['prihalSurat']) . '</strong>
                                                                             } ?> data-toggle="tooltip" data-placement="right" title="" data-original-title="Hapus" onclick="hapus(<?= $sk['id']; ?>)" class="btn btn-danger"><i class="mdi mdi-delete-forever"></i></button>
                                                     <script>
                                                         function edit(x) {
-                                                            window.location.href = "<?= base_url('SuratMasuk/keluarEdit/') ?>" + x;
+                                                            window.location.href = "<?= base_url('SuratKeluar/keluarEdit/') ?>" + x;
                                                         }
 
                                                         function hapus(x) {
                                                             var yakin = confirm('Yakin ingin hapus surat keluar nomor agenda "<?= str_pad($sk['noAgenda'], 3, "0", STR_PAD_LEFT); ?>" ??');
                                                             if (yakin) {
-                                                                window.location = "<?= base_url('SuratMasuk/keluarHapus/'); ?>" + x;
+                                                                window.location = "<?= base_url('SuratKeluar/keluarHapus/'); ?>" + x;
                                                             }
                                                         };
                                                     </script>
@@ -183,7 +183,7 @@ Prihal Surat    : <strong>' . strtoupper($sk['prihalSurat']) . '</strong>
                         <div class="form-group">
                             <label for="">Upload Surat</label>
                             <input type="file" id="input-file-now" name="fileSurat" class="dropify">
-                            <p><small>Format file : PDF | JPG | PNG, max : 1 Mb</small></p>
+                            <p><small>Format file : PDF, max : 1 Mb</small></p>
                         </div>
                         <div id="jahh">
                             <button type="submit" id="jah" onclick="oh()" class="btn btn-primary mt-2" class="btn btn-primary mt-2"><i class="mdi mdi-content-save"></i> Simpan</button>

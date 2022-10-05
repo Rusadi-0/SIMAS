@@ -68,7 +68,7 @@
                                 </div>
                                 
                                 <div class="col-sm-9">
-                                    <a href="<?= base_url('surat/keluar'); ?>" class="btn btn-outline-secondary"><i class="mdi mdi-undo-variant"></i> Kembali</a>
+                                    <a href="../" class="btn btn-outline-secondary"><i class="mdi mdi-undo-variant"></i> Kembali</a>
                                 </div>
                             </div>
                         </div>

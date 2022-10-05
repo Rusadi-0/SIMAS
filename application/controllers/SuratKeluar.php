@@ -35,8 +35,8 @@ class SuratKeluar extends CI_Controller
             $this->load->view('SuratKeluar/index', $data);
             $this->load->view('templates/footer');
         } else {
-            $config['upload_path']          = './surat/';
-            $config['allowed_types']        = 'pdf|jpg|png';
+            $config['upload_path']          = './ZpITfmvwnMrnap5Yfj5lUD6/';
+            $config['allowed_types']        = 'pdf';
             $config['max_size']             = 1244;
             $config['encrypt_name']         = TRUE;
             // $config['max_width']            = 1024;
@@ -53,28 +53,22 @@ class SuratKeluar extends CI_Controller
                 'tgl' => htmlspecialchars($this->input->post('tgl')),
                 'fileSurat' => htmlspecialchars($this->upload->data('file_name'))
             ];
-            if ($this->upload->data('file_ext') == '.pdf') {
+            if ($this->upload->data('file_ext') == '.pdf' && $this->upload->data('file_size') < 1300) {
                 $this->db->insert('surat_keluar', $datas);
                 $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Rekam surat keluar...<br><strong>Berhasil..!</strong></div>');
                 redirect('SuratKeluar');
-            } elseif ($this->upload->data('file_ext') == '.jpg') {
-                $this->db->insert('surat_keluar', $datas);
-                $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Rekam berhasil dan Surat berhasil Terkirim Ke <br><strong>Kepala Badan</strong></div>');
-                redirect('SuratKeluar');
-            } elseif ($this->upload->data('file_ext') == '.png') {
-                $this->db->insert('surat_keluar', $datas);
-                $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Rekam berhasil dan Surat berhasil Terkirim Ke <br><strong>Kepala Badan</strong></div>');
-                redirect('SuratKeluar');
-            } elseif ($this->upload->data('file_ext') == '') {
-                $this->db->insert('surat_keluar', $datas);
-                $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Rekam berhasil dan Surat berhasil Terkirim Ke <br><strong>Kepala Badan</strong></div>');
-                redirect('SuratKeluar');
+            // } elseif ($this->upload->data('file_ext') == '') {
+            //     $this->db->insert('surat_keluar', $datas);
+            //     $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Rekam berhasil dan Surat berhasil Terkirim Ke <br><strong>Kepala Badan</strong></div>');
+            //     redirect('SuratKeluar');
             } else {
-                $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-danger " data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>
-                 GAGAL, file terupload berformat<strong> Salah..!!</strong>
-                </div>');
-                $this->session->set_flashdata('tidak', '<small style="color: red;">File yang di Upload harus format <strong>PDF / JPG / PNG</strong></small>');
-                redirect('SuratKeluar');
+                if ($this->upload->data('file_ext') != '.pdf') {
+                    $this->session->set_flashdata('tidak', '<small style="color: red;"> <strong>UPLOAD GAGAL..!!</strong> File diupload bukan berformat PDF  </small>');
+                    redirect('SuratKeluar');
+                } elseif ($this->upload->data('file_size') > 1300) {
+                    $this->session->set_flashdata('tidak', '<small style="color: red;"> <strong>UPLOAD GAGAL..!!</strong> File diupload melebih 1 MB  </small>');
+                    redirect('SuratKeluar');
+                }
             }
         }
     }
@@ -109,7 +103,7 @@ class SuratKeluar extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/topbar', $data);
             $this->load->view('templates/sidebar', $data);
-            $this->load->view('surat/edit/editKeluar', $data);
+            $this->load->view('suratKeluar/edit/editKeluar', $data);
             $this->load->view('templates/footer');
         } else {
             $nomorSurat = htmlspecialchars($this->input->post('nomorSurat'));
@@ -121,9 +115,9 @@ class SuratKeluar extends CI_Controller
             $upload_image = $_FILES['fileSurat']['name'];
 
             if ($upload_image) {
-                $config['allowed_types']        = 'pdf|jpg|png';
+                $config['allowed_types']        = 'pdf';
                 $config['max_size']             = 1244;
-                $config['upload_path']          = './surat/';
+                $config['upload_path']          = './ZpITfmvwnMrnap5Yfj5lUD6/';
                 $config['encrypt_name']         = TRUE;
 
                 $this->load->library('upload', $config);
@@ -131,7 +125,7 @@ class SuratKeluar extends CI_Controller
                 if ($this->upload->do_upload('fileSurat')) {
                     $old_image = $data['suratKeluar']['fileSurat'];
                     if ($old_image != 'default.jpg') {
-                        unlink(FCPATH . './surat/' . $old_image);
+                        unlink(FCPATH . './ZpITfmvwnMrnap5Yfj5lUD6/' . $old_image);
                     }
                     $new_image = $this->upload->data('file_name');
                     $this->db->set('fileSurat', $new_image);

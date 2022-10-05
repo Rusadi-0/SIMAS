@@ -38,7 +38,7 @@
                             $subMenu = $this->db->query($querySubMenu)->result_array();
                             ?>
                             <?php foreach ($subMenu as $sm) : ?>
-                                <li class="has-submenu">
+                                <li class="has-submenu <?php if($title == $sm['title']){ echo "active";}?>">
                                     <a href="<?= base_url($sm['url']); ?>"><i class="<?= $sm['icons']; ?>"></i><?= $sm['title']; ?></a>
                                 </li>
 

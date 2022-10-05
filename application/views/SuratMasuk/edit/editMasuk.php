@@ -134,7 +134,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-                <a href="<?= base_url('surat/ulang_disposisi/') . $suratMasuk['id']?>" class="btn btn-danger">YAKIN</a>
+                <a href="<?= base_url('suratmasuk/ulang_disposisi/') . $suratMasuk['id']?>" class="btn btn-danger">YAKIN</a>
             </div>
         </div>
     </div>

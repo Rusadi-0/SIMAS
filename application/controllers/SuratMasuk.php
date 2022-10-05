@@ -35,13 +35,12 @@ class SuratMasuk extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $namaFolder = $this->input->post('noAgenda') + 1;
-            mkdir("F:\\xampp\\htdocs\\SIMAS\\ZpITfmvwnMrnap5Yfj5lUD6\\" . $namaFolder);
-            $config['upload_path']          = './ZpITfmvwnMrnap5Yfj5lUD6/' . $namaFolder . '/';
+            $config['upload_path']          = './ZpITfmvwnMrnap5Yfj5lUD6/';
             // $config['allowed_types']        = 'pdf|jpg|png';
             $config['allowed_types']        = 'pdf';
             $config['max_size']             = 1244;
-            $config['file_name']         = "9416636910c22e60eb16bf81f6724665";
-            // $config['encrypt_name']         = TRUE;
+            // $config['file_name']         = "9416636910c22e60eb16bf81f6724665";
+            $config['encrypt_name']         = TRUE;
             // $config['max_wth']            = 1024;
             // $config['max_height']           = 768;
 
@@ -77,12 +76,8 @@ class SuratMasuk extends CI_Controller
     //function untuk hapus surat masuk
     public function masukHapus($id)
     {
-        // chmod($path, 0777);
-        // unlink($path);
-        unlink("F:\\xampp\\htdocs\\SIMAS\\ZpITfmvwnMrnap5Yfj5lUD6\\" . $id . "\\9416636910c22e60eb16bf81f6724665.pdf");
-        rmdir("F:\\xampp\\\htdocs\\SIMAS\\ZpITfmvwnMrnap5Yfj5lUD6\\" . $id . "\\");
         $this->db->delete('surat_masuk', ['noAgenda' => $id]);
-        $this->db->delete('lembar_disposisi', ['noAgenda' => $id]);
+        // $this->db->delete('lembar_disposisi', ['noAgenda' => $id]);
         $this->session->set_flashdata('message', '<div class="alert fade show notifikasi alert-success" data-dismiss="alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><i class="mdi mdi-close"></i></button>Surat dipilih berhasil <strong>Terhapus..!!</strong></div>');
         redirect('SuratMasuk');
     }

@@ -175,7 +175,7 @@ Prihal Surat    : <strong>' . strtoupper($sk['prihalSurat']) . '</strong>
 														}
 
 														if (!$sk['fileSurat'] == NULL) {
-															echo '<a target="_blank" href="' . base_url('./ZpITfmvwnMrnap5Yfj5lUD6/') . $sk['noAgenda']. '/' . $sk['fileSurat'] . '" class="btn btn-info"><i class="mdi mdi-eye"></i> Lihat Surat</a>';
+															echo '<a target="_blank" href="' . base_url('./ZpITfmvwnMrnap5Yfj5lUD6/'). $sk['fileSurat'] . '" class="btn btn-info"><i class="mdi mdi-eye"></i> Lihat Surat</a>';
 														}
 
 														?>
