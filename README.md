@@ -28,13 +28,11 @@ Aplikasi SIMAS menyediakan berbagai fitur yang dapat membantu pengguna dalam men
 
 Jika Anda tertarik untuk berkontribusi dalam pengembangan aplikasi SIMAS, kami sangat terbuka dengan kontribusi dari berbagai kalangan. Silakan *fork* repository ini dan buat *pull request* dengan perubahan yang ingin Anda usulkan.
 
-Jangan lupa untuk ikuti panduan kontribusi yang kami sediakan dalam berkas CONTRIBUTING.md untuk memastikan bahwa kontribusi Anda dapat diakomodasi dengan baik.
-
 ## Tentang Pengembang
 
-Aplikasi SIMAS dikembangkan oleh mahasiswa Universitas Sari Mulia Banjarmasin sebagai bagian dari tugas akhir penelitian skripsi. mahasiswa ini berdedikasi untuk menciptakan solusi teknologi informasi yang berguna dan bermanfaat bagi masyarakat.
+Aplikasi SIMAS dikembangkan oleh mahasiswa Universitas Sari Mulia Banjarmasin sebagai bagian dari tugas akhir penelitian skripsi. saya sebagai mahasiswa ingin berdedikasi untuk menciptakan solusi teknologi informasi yang berguna dan bermanfaat bagi masyarakat.
 
-Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan atau masukan terkait aplikasi SIMAS. Kami senang mendengar dari Anda!
+Jangan ragu untuk menghubungi saya jika Anda memiliki pertanyaan atau masukan terkait aplikasi SIMAS. Kami siap mendengarkan..
 
 ---
 **Catatan**: Repository ini memiliki lisensi tertentu. Harap perhatikan dan ikuti ketentuan lisensi yang berlaku sebelum menggunakan atau mendistribusikan kode dalam repository ini.
